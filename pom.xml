@@ -11,6 +11,7 @@
     <modules>
         <module>quartz</module>
         <module>hbase</module>
+        <module>java</module>
     </modules>
 
 
