@@ -22,23 +22,29 @@ public class Sequence {
     }
 
     public static void main(String[] args) {
-        Sequence sequence=new Sequence();
-        new Thread(()->{
-            System.out.println(sequence.getValue());
+        Sequence sequence = new Sequence();
+
+
+        new Thread(() -> {
+            while (true) {
+                int num=sequence.getValue();
+                if (num > 100) {
+                    return;
+                }
+                System.out.println(Thread.currentThread().getName() + ": " + num);
+            }
         }).start();
 
-        new Thread(()->{
-            System.out.println(sequence.getValue());
+        new Thread(() -> {
+            while (true) {
+                int num=sequence.getValue();
+                if (num > 100) {
+                    return;
+                }
+                System.out.println(Thread.currentThread().getName() + ": " + num);
+            }
         }).start();
 
 
-        new Thread(()->{
-            System.out.println(sequence.getValue());
-        }).start();
-
-
-        new Thread(()->{
-            System.out.println(sequence.getValue());
-        }).start();
     }
 }
