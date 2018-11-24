@@ -10,16 +10,7 @@ public class HbaseConfig {
 
 
 
-    // 关闭连接
-    public static void close() {
-        if (HconnectionFactory.connection != null) {
-            try {
-                HconnectionFactory.connection.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+
 
 
 }

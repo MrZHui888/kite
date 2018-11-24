@@ -16,7 +16,8 @@ public class ThreadPriorityDemo {
 
 class PriorityRunnable extends Thread {
 
-    @Override public void run() {
+    @Override
+    public void run() {
         System.out.println("获取当前线程的优先级" + this.getPriority());
     }
 }

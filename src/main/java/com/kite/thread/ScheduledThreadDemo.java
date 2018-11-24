@@ -1,5 +1,6 @@
 package com.kite.thread;
 
+
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 import java.text.SimpleDateFormat;
@@ -18,7 +19,7 @@ public class ScheduledThreadDemo {
 
     private ScheduledExecutorService scheduledExecutor;
 
-    public void start() {
+    private void start() {
         NamedThreadFactory namedThreadFactory = new NamedThreadFactory();
         scheduledExecutor = new ScheduledThreadPoolExecutor(7, namedThreadFactory);
         final Random random = new Random();
@@ -31,11 +32,12 @@ public class ScheduledThreadDemo {
                 System.out.println(Thread.currentThread().getName() + "  " + sdf.format(new Date()) + "结束执行");
 
             } catch (Throwable e) {
+                e.printStackTrace();
             }
         }, 0, 5, TimeUnit.SECONDS);
     }
 
-    public void stop() {
+    private void stop() {
         if (scheduledFuture != null) {
             scheduledFuture.cancel(false);
         }
@@ -60,12 +62,23 @@ public class ScheduledThreadDemo {
         System.out.println(Thread.currentThread().getName() + " 停止" + sdf.format(new Date()));
     }
 
-    class NamedThreadFactory implements ThreadFactory {
+
+    class NameThreadFactory implements ThreadFactory{
+        @Override
+        public Thread newThread(Runnable r) {
+            return null;
+        }
+    }
+
+     class NamedThreadFactory implements ThreadFactory {
         private ThreadFactory target;
 
         private final ThreadFactoryBuilder builder = new ThreadFactoryBuilder();
 
-        @Override public Thread newThread(Runnable r) {
+
+
+         @Override
+        public Thread newThread(Runnable r) {
             if (target == null) {
                 synchronized (this) {
                     if (target == null) {
