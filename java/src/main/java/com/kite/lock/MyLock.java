@@ -12,6 +12,7 @@ import java.util.concurrent.locks.Lock;
 public class MyLock implements Lock {
 
     private boolean isLocked = false;
+    Thread currentThread=null;
 
     @Override
     public synchronized void lock() {

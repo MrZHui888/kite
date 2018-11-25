@@ -8,19 +8,20 @@ package com.kite.lock;
 public class PartLock {
 
 
-    public  synchronized  void partOne(){
+    private synchronized void partOne() {
 
         System.out.println("现在进入 one");
 
     }
 
 
-    public synchronized  void  partTWo(){
+    private synchronized void partTWo() {
+
         System.out.println("现在进入  two");
     }
 
 
-    public synchronized  void  part(){
+    public synchronized void part() {
         System.out.println("现在进入  ");
 
         this.partOne();
