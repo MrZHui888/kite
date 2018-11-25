@@ -29,4 +29,9 @@ public class PartLock {
         this.partTWo();
     }
 
+
+    public static void main(String[] args) {
+        new PartLock().part();
+    }
+
 }
