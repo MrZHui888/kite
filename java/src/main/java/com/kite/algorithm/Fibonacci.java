@@ -12,7 +12,7 @@ public class Fibonacci {
 
         int num = 100;
 
-        System.out.println(fibonacci1(10));
+        System.out.println(fib3(10));
 
 //        long[] nums = new long[num + 1];
 //        nums[0] = 0;
@@ -47,12 +47,31 @@ public class Fibonacci {
 
     }
 
+    private static int fib3(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1 || n == 2) {
+            return 1;
+        }
+
+        int pre = 2;//记录上一个
+        int pre1 = 1;//记录上上一个
+        int tmp = 0;//记录本次
+        for (int i = 3; i < n + 1; i++) {
+            tmp = pre;
+            pre = tmp + pre1;
+            pre1 = tmp;
+        }
+        return tmp;
+    }
+
     private static int fib(int n, int[] memo) {
         if (n == 0) {
             memo[0] = 0;
             return 0;
         }
-        if (n == 1 || n==2) {
+        if (n == 1 || n == 2) {
             memo[n] = 1;
             return 1;
         }
