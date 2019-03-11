@@ -19,6 +19,7 @@ public class RemoveKZeros {
         }
 
         char[] chars = str.toCharArray();
+
         int count = 0;
         int start = -1;
         boolean isFirst = false;
