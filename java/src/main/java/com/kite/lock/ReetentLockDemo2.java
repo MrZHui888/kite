@@ -34,6 +34,14 @@ public class ReetentLockDemo2 {
         }).start();
 
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                demo2.b();
+            }
+        }).start();
+
+
 
     }
 
