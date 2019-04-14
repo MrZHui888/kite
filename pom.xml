@@ -12,6 +12,7 @@
         <module>quartz</module>
         <module>hbase</module>
         <module>java</module>
+        <module>nio</module>
     </modules>
 
 
