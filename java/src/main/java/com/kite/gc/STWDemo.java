@@ -14,7 +14,8 @@ public class STWDemo {
     public static class MyThread extends Thread {
         HashMap hashMap = new HashMap();
 
-        @Override public void run() {
+        @Override
+        public void run() {
             try {
                 while (true) {
                     if (hashMap.size() * 512 / 1024 / 1024 >= 400) {
@@ -39,7 +40,8 @@ public class STWDemo {
     public static class PrintThread extends Thread {
         public final static long startTime = System.currentTimeMillis();
 
-        @Override public void run() {
+        @Override
+        public void run() {
 
             try {
                 while (true) {
@@ -56,7 +58,8 @@ public class STWDemo {
 
     public static class GCDemo extends Thread {
 
-        @Override public void run() {
+        @Override
+        public void run() {
             try {
                 while (true) {
                     List<GarbageCollectorMXBean> garbageCollectorMXBeans = ManagementFactory
@@ -64,18 +67,18 @@ public class STWDemo {
                     for (GarbageCollectorMXBean garbageCollectorMXBean : garbageCollectorMXBeans) {
                         String metricName = garbageCollectorMXBean.getName();
 
-                        System.out.println(metricName + "_Count:  " + garbageCollectorMXBean.getCollectionCount()+",   " + metricName
-                                        + "_Time: " + garbageCollectorMXBean.getCollectionTime());
+                        System.out.println(metricName + "_Count:  " + garbageCollectorMXBean.getCollectionCount() + ",   " + metricName
+                                + "_Time: " + garbageCollectorMXBean.getCollectionTime());
 
                     }
 
                     OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
-                    System.out.println("System_Load_Avg :"+operatingSystemMXBean.getSystemLoadAverage());
+                    System.out.println("System_Load_Avg :" + operatingSystemMXBean.getSystemLoadAverage());
 
                     Thread.sleep(1000);
 
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -86,7 +89,7 @@ public class STWDemo {
 
         PrintThread printThread = new PrintThread();
 
-        GCDemo gcDemo=new GCDemo();
+        GCDemo gcDemo = new GCDemo();
 
         myThread.start();
 
