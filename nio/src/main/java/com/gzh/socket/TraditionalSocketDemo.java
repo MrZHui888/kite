@@ -9,6 +9,8 @@ import java.net.Socket;
  * 传统的socket 編程
  */
 public class TraditionalSocketDemo {
+
+
     public static void main(String[] args) throws Exception {
         ServerSocket serverSocket = new ServerSocket(9999);
         System.out.println("服务端启动");
