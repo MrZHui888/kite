@@ -9,14 +9,12 @@ public class PartLock {
 
 
     private synchronized void partOne() {
-
         System.out.println("现在进入 one");
 
     }
 
 
     private synchronized void partTWo() {
-
         System.out.println("现在进入  two");
     }
 
