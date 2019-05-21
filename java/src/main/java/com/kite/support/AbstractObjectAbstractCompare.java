@@ -7,7 +7,8 @@ import com.kite.common.enums.CompareTypeEnum;
  *
  * @param <E>
  */
-public abstract class AbstractObjectAbstractCompare<E> extends AbstractCompareType<E> implements Comparators<E> {
+public abstract class AbstractObjectAbstractCompare<E> extends AbstractCompareType<E>
+        implements Comparators<E> {
     @Override
     public boolean compare(E a, E b, CompareTypeEnum compareTypeEnum) {
         if (a == null || b == null) {
