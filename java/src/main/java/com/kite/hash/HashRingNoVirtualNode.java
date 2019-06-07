@@ -58,7 +58,7 @@ public class HashRingNoVirtualNode {
 		Map<String, Integer> resMap = new HashMap<>();
 
 		for (int i = 0; i < 100000; i++) {
-			Integer widgetId = (int) (Math.random() * 15);
+			Integer widgetId = (int) (Math.random() * 1500);
 			String server = getServer(widgetId.toString());
 			if (resMap.containsKey(server)) {
 				resMap.put(server, resMap.get(server) + 1);
