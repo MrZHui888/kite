@@ -12,11 +12,11 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface UserInterface {
 
-	UserInterface userInterface = Mappers.getMapper(UserInterface.class);
-
-
-
-	@Mapping(target = "user.student", source = "studentVo")
-	UserDto userVoToDto(UserVo userVo,StudentVo studentVo);
+//	UserInterface userInterface = Mappers.getMapper(UserInterface.class);
+//
+//
+//
+//	@Mapping(target = "user.student", source = "studentVo")
+//	UserDto userVoToDto(UserVo userVo,StudentVo studentVo);
 
 }
