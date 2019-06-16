@@ -16,10 +16,7 @@ public class MapStructTest {
 		StudentVo studentVo=new StudentVo();
 		studentVo.setAge(12);
 		studentVo.setName("student");
-		UserInterface userInterface=UserInterface.userInterface;
 
-		UserDto userDto = userInterface.userVoToDto(userVo);
-		System.out.println(userDto);
 	}
 
 }
