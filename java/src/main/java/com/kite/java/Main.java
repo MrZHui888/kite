@@ -3,7 +3,6 @@ package com.kite.java;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class Main {
 
@@ -20,10 +19,10 @@ public class Main {
 
     public static void main(String[] args) {
         BigDecimal decimal = BigDecimal.valueOf(108.12);
-        BigDecimal decimal1 =new BigDecimal(108.12);
-        BigDecimal decimal2 =new BigDecimal(108.12);
+        BigDecimal decimal1 = new BigDecimal(108.12);
+        BigDecimal decimal2 = new BigDecimal(108.12);
 
-        BigDecimal decimal3=BigDecimal.valueOf(decimal1.doubleValue());
+        BigDecimal decimal3 = BigDecimal.valueOf(decimal1.doubleValue());
 
 
         System.out.println(decimal.compareTo(decimal1));
