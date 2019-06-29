@@ -8,6 +8,7 @@ public class ThreadA extends Thread {
         os = os;
     }
 
+    @Override
     public void run() {
         super.run();
         os.serviceMethod();

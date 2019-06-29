@@ -69,12 +69,7 @@ public class UniqueIdGen implements IdGen {
      */
     @Override
     public String nextId() {
-        try {
-            long uniqueId = this.genUniqueId();
-            return Long.toHexString(uniqueId);
-        } catch (Exception e) {
-            return "";
-        }
+        return Long.toHexString(this.genUniqueId());
     }
 
     /**
@@ -82,13 +77,12 @@ public class UniqueIdGen implements IdGen {
      *
      * @return
      */
-    private synchronized long genUniqueId() throws Exception {
+    private synchronized long genUniqueId() {
         long current = System.currentTimeMillis();
 
-        // 如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过，出现问题抛出异常
         if (current < lastTimestamp) {
-            long diffTimestamp = lastTimestamp - current;
-            throw new Exception("出现了时钟回拨 倒置了{}毫秒 " + diffTimestamp);
+            // 如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过，出现问题返回-1
+            return -1;
         }
 
         if (current == lastTimestamp) {
@@ -114,7 +108,7 @@ public class UniqueIdGen implements IdGen {
     }
 
     /**
-     * 阻塞自旋到下一个毫秒
+     * 阻塞到下一个毫秒
      *
      * @param timeStamp
      * @return

@@ -1,9 +1,6 @@
 package com.kite.algorithm;
 
-import com.google.common.collect.Maps;
-
 import java.util.Arrays;
-import java.util.HashMap;
 
 /**
  * @author : Guzh
@@ -17,9 +14,6 @@ public class QuickSort {
         sort(num, 0, num.length - 1);
 
         Arrays.stream(num).forEach(x -> System.out.print(x + " "));
-
-
-
     }
 
     private static void sort(int[] numList, int left, int right) {
