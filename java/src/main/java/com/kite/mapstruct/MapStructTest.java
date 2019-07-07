@@ -18,8 +18,8 @@ public class MapStructTest {
 		studentVo.setName("student");
 		UserInterface userInterface=UserInterface.userInterface;
 
-		UserDto userDto = userInterface.userVoToDto(userVo);
-		System.out.println(userDto);
+		//UserDto userDto = userInterface.userVoToDto(userVo,null);
+		//System.out.println(userDto);
 	}
 
 }
