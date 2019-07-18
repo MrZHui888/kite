@@ -48,7 +48,7 @@ public class Demo extends RecursiveTask<Integer> {
 
 		ForkJoinPool pool = new ForkJoinPool(3);
 
-		Future<Integer> future = pool.submit(new Demo(1, 1000000000));
+		Future<Integer> future = pool.submit(new Demo(1, 10000));
 
 		System.out.println("....");
 
