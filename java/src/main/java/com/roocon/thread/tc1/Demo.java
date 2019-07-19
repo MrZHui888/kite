@@ -19,19 +19,19 @@ public class Demo extends RecursiveTask<Integer> {
 		System.out.println(Thread.currentThread().getName() + " ... ");
 		
 		int sum = 0;
-		// ²ð·ÖÈÎÎñ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if (end - begin <= 2) {
-			// ¼ÆËã
+			// ï¿½ï¿½ï¿½ï¿½
 			for (int i = begin; i <= end; i++) {
 				sum += i;
 			}
 		} else {
-			// ²ð·Ö
+			// ï¿½ï¿½ï¿½
 			
 			Demo d1 = new Demo(begin, (begin + end) / 2);
 			Demo d2 = new Demo((begin + end)/2 + 1, end);
 			
-			// Ö´ÐÐÈÎÎñ
+			// Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			d1.fork();
 			d2.fork();
 			
@@ -48,15 +48,13 @@ public class Demo extends RecursiveTask<Integer> {
 
 		ForkJoinPool pool = new ForkJoinPool(3);
 
-<<<<<<< HEAD
+
 		Future<Integer> future = pool.submit(new Demo(1, 1000000000));
-=======
-		Future<Integer> future = pool.submit(new Demo(1, 10000));
->>>>>>> 14cc92fe984ad08805e170b82c2299b24f147edc
+
 
 		System.out.println("....");
 
-		System.out.println("¼ÆËãµÄÖµÎª£º" + future.get());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÎªï¿½ï¿½" + future.get());
 	}
 
 }
