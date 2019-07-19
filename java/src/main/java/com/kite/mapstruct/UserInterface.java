@@ -1,20 +1,23 @@
 package com.kite.mapstruct;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
-import org.mapstruct.factory.Mappers;
+
 
 /**
  * @author : Guzh
  * @since : 2019-06-01
  */
-@Mapper
+
+<<<<<<< HEAD
+	//UserDto userVoToDto(UserVo userVo,StudentVo studentVo);
+=======
 public interface UserInterface {
 
-	UserInterface userInterface = Mappers.getMapper(UserInterface.class);
-
-
-	//UserDto userVoToDto(UserVo userVo,StudentVo studentVo);
+//	UserInterface userInterface = Mappers.getMapper(UserInterface.class);
+//
+//
+//
+//	@Mapping(target = "user.student", source = "studentVo")
+//	UserDto userVoToDto(UserVo userVo,StudentVo studentVo);
+>>>>>>> 14cc92fe984ad08805e170b82c2299b24f147edc
 
 }

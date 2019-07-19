@@ -39,13 +39,21 @@ public class Demo {
 		}).start();
 		
 //		new Thread(new Runnable() {
+<<<<<<< HEAD
 //			
+=======
+//
+>>>>>>> 14cc92fe984ad08805e170b82c2299b24f147edc
 //			@Override
 //			public void run() {
 //				d.b();
 //			}
 //		}).start();
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> 14cc92fe984ad08805e170b82c2299b24f147edc
 	}
 
 }
