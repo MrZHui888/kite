@@ -12,10 +12,15 @@ import java.util.stream.Collectors;
 public class MaoPao {
     public static void main(String[] args) {
         int[] lines = new int[]{232, 88, 2, 43, 1, 98};
+        int[] lines1 = new int[]{232, 88, 2, 43, 1, 98};
 
         sort(lines);
-        System.out.println("result");
         print(lines);
+
+        sort1(lines1);
+        print(lines1);
+
+
 
 
     }
@@ -24,7 +29,6 @@ public class MaoPao {
         if (nums == null || nums.length <= 1) {
             return;
         }
-
         int length = nums.length;
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length - i - 1; j++) {
@@ -32,8 +36,23 @@ public class MaoPao {
                     int tmp = nums[j];
                     nums[j] = nums[j + 1];
                     nums[j + 1] = tmp;
-                    System.out.println("i=" + i + "j=" + j);
-                    print(nums);
+                }
+            }
+        }
+    }
+
+    private static void sort1(int[] nums) {
+        if (nums == null || nums.length <= 1) {
+            return;
+        }
+        int length = nums.length;
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length - i - 1; j++) {
+                if (nums[j] < nums[j + 1]) {
+                    int tmp = nums[j + 1];
+                    nums[j + 1] = nums[j];
+                    nums[j] = tmp;
+
                 }
             }
         }
