@@ -53,8 +53,10 @@ public class NQueen {
 	private void printQueens(int[] result, int n) { // 打印出一个二维矩阵
 		for (int row = 0; row < n; ++row) {
 			for (int column = 0; column < n; ++column) {
-				if (result[row] == column) System.out.print("Q ");
-				else System.out.print("* ");
+				if (result[row] == column) {
+					System.out.print("Q ");
+				}
+				else{ System.out.print("* ");}
 			}
 			System.out.println();
 		}
