@@ -47,15 +47,11 @@ public class QuickSort {
             if (j > i) {
                 nums[i] = nums[j];
             }
-
         }
 
         nums[i] = pivot;
         sort1(nums, left, i - 1);
-
         sort1(nums, i + 1, right);
-
-
     }
 
 
