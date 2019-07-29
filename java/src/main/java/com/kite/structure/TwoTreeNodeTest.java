@@ -15,7 +15,7 @@ public class TwoTreeNodeTest {
 
         System.out.println(true);
 
-        TreeNode treeNode = tree.find(2);
+        TreeNode treeNode = tree.find(0);
         treeNode.print();
     }
 }

@@ -4,24 +4,18 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 /**
- * 冒泡算法
- * 时间复杂度
- * 最好是 O(n)
- * 最差O(n 的2次方)
+ * 冒泡算法 时间复杂度 最好是 O(n) 最差O(n 的2次方)
  */
 public class MaoPao {
     public static void main(String[] args) {
-        int[] lines = new int[]{232, 88, 2, 43, 1, 98};
-        int[] lines1 = new int[]{232, 88, 2, 43, 1, 98};
+        int[] lines = new int[] {232, 88, 2, 43, 1, 98};
+        int[] lines1 = new int[] {232, 88, 2, 43, 1, 98};
 
         sort(lines);
         print(lines);
 
         sort1(lines1);
         print(lines1);
-
-
-
 
     }
 
@@ -67,9 +61,4 @@ public class MaoPao {
         System.out.println(stringBuffer);
     }
 
-
-    private static void sortPrint(int[] nums) {
-
-
-    }
 }
