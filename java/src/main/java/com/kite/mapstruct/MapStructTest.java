@@ -8,18 +8,15 @@ public class MapStructTest {
 
 
 	public static void main(String[] args) {
-//		UserVo userVo = new UserVo();
-//		userVo.setAge(12);
-//		userVo.setName("dsaasd");
-//		userVo.setSex("12");
-//
-//		StudentVo studentVo=new StudentVo();
-//		studentVo.setAge(12);
-//		studentVo.setName("student");
-//		UserInterface userInterface=UserInterface.userInterface;
-//
-//		UserDto userDto = userInterface.userVoToDto(userVo);
-//		System.out.println(userDto);
+		UserVo userVo = new UserVo();
+		userVo.setAge(12);
+		userVo.setName("dsaasd");
+		userVo.setSex("12");
+
+		StudentVo studentVo = new StudentVo();
+		studentVo.setAge(12);
+		studentVo.setName("student");
+
 	}
 
 }

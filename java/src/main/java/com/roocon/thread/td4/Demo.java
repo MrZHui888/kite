@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.TimeUnit;
 
 public class Demo {
-	
+
 	public static void main(String[] args) {
 		ThreadPoolExecutor threadPool = new ThreadPoolExecutor(10, 50, 10, TimeUnit.DAYS, new ArrayBlockingQueue<>(10),new ThreadPoolExecutor.CallerRunsPolicy());
 		AtomicInteger count = new AtomicInteger();
@@ -20,14 +20,15 @@ public class Demo {
 				}
 			});
 		}
-		
+
 		threadPool.shutdown();
-		
-		
+
+
 		while(Thread.activeCount() > 1) {
-			
+
 		}
 		System.out.println(count.get());
 	}
 
 }
+
