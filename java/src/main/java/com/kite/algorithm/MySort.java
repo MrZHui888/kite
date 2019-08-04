@@ -3,7 +3,7 @@ package com.kite.algorithm;
 public class MySort {
     public static void main(String[] args) {
         int[] a = {21, 3, 44, 1, 53, 22, 1, 2, 3, 7};
-        quitSort(a, 0, a.length-1);
+        quitSort(a, 0, a.length - 1);
         System.out.println(a);
     }
 
@@ -32,6 +32,5 @@ public class MySort {
         a[left] = tmp;
         return left;
     }
-
 
 }

@@ -7,6 +7,6 @@ package com.kite.algorithm;
 
 public class SnowFlake {
     public static void main(String[] args) {
-
+        System.out.println("");
     }
 }

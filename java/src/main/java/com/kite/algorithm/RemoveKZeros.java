@@ -1,5 +1,9 @@
 package com.kite.algorithm;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * 去掉字符串中连续出现k个0的字符串
  * 比如 str="A00B" k=2  返回 "A00B"
@@ -10,6 +14,11 @@ public class RemoveKZeros {
     public static void main(String[] args) {
 
         System.out.println(removeKZeros("A000B000C000", 3));
+        List list=new ArrayList();
+        list.remove(12);
+
+        List list1=new LinkedList();
+        list1.remove(12);
 
     }
 

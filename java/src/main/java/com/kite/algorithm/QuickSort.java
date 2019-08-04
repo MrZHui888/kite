@@ -47,5 +47,4 @@ public class QuickSort {
         sort(nums, i + 1, right);
     }
 
-
 }

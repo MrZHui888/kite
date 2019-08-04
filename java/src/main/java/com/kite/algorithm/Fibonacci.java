@@ -1,30 +1,13 @@
 package com.kite.algorithm;
 
-import java.util.Arrays;
-
 /**
- * 动态规划  解决斐波拉切 数列
- * 采用记录法 减少递归
+ * 动态规划 解决斐波拉切 数列 采用记录法 减少递归
  */
 public class Fibonacci {
 
     public static void main(String[] args) {
 
-        int num = 100;
-
         System.out.println(fib3(10));
-
-//        long[] nums = new long[num + 1];
-//        nums[0] = 0;
-//        nums[1] = 1;
-//        long total = 0;
-//
-//        for (int n = 2; n <= num; n++) {
-//            nums[n] = nums[n - 1] + nums[n - 2];
-//            total = total + nums[n];
-//        }
-//        System.out.println(Arrays.toString(nums));
-//        System.out.println(total);
 
     }
 
@@ -55,9 +38,9 @@ public class Fibonacci {
             return 1;
         }
 
-        int pre = 2;//记录上一个
-        int pre1 = 1;//记录上上一个
-        int tmp = 0;//记录本次
+        int pre = 2;// 记录上一个
+        int pre1 = 1;// 记录上上一个
+        int tmp = 0;// 记录本次
         for (int i = 3; i < n + 1; i++) {
             tmp = pre;
             pre = tmp + pre1;
