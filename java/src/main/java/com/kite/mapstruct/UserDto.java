@@ -9,10 +9,13 @@ import lombok.Data;
 @Data
 public class UserDto {
 
-	private Integer age;
 
+	private Integer age;
 
 	private String name;
 
 	private StudentDto student;
+
+
+
 }

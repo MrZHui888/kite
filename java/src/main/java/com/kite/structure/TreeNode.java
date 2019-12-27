@@ -1,5 +1,6 @@
 package com.kite.structure;
 
+
 import lombok.Data;
 
 @Data
@@ -39,3 +40,4 @@ public class TreeNode {
         this.right = right;
     }
 }
+
