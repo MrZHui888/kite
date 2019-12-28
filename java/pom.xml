@@ -32,6 +32,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.bj58.hy.strategy.scf</groupId>
+            <artifactId>com.bj58.hy.strategy.scf.router</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <version>2.3.2</version>

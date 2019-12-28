@@ -3,6 +3,7 @@ package com.disruptor.bhz.generate2;
 import com.disruptor.bhz.generate1.Trade;
 import com.lmax.disruptor.BusySpinWaitStrategy;
 import com.lmax.disruptor.EventFactory;
+import com.lmax.disruptor.EventHandler;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.EventHandlerGroup;
 import com.lmax.disruptor.dsl.ProducerType;
@@ -36,10 +37,15 @@ public class Main {
         }, bufferSize, executor, ProducerType.MULTI, new BusySpinWaitStrategy());
 
 
+        EventHandler[] handlers =new EventHandler[]{new Handler1(), new Handler2()};
+
+
+
+
 //        //菱形操作
 //        //使用disruptor创建消费者组C1,C2
         EventHandlerGroup<Trade> handlerGroup =
-                disruptor.handleEventsWith(new Handler1(), new Handler2());
+                disruptor.handleEventsWith(handlers);
         //声明在C1,C2完事之后执行JMS消息发送操作 也就是流程走到C3
         handlerGroup.then(new Handler3());
 
