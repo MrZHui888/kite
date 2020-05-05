@@ -5,8 +5,7 @@ import com.lmax.disruptor.EventHandler;
 import com.lmax.disruptor.WorkHandler;
 
 
-
-public class Handler1 implements EventHandler<Trade>, WorkHandler<Trade> {
+public class Handler6 implements EventHandler<Trade>, WorkHandler<Trade> {
 	  
     @Override
     public void onEvent(Trade event, long sequence, boolean endOfBatch) throws Exception {
@@ -16,7 +15,6 @@ public class Handler1 implements EventHandler<Trade>, WorkHandler<Trade> {
 
     @Override
     public void onEvent(Trade event) throws Exception {  
-   // 	System.out.println(Thread.currentThread().getId()+"  "+"handler1: set name");
-    	event.setName("h1");
+    	//System.out.println(Thread.currentThread().getId()+"  "+"handler6: ");
     }
 }  

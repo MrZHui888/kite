@@ -21,6 +21,7 @@ $HOME
 # system ignore
 .DS_Store
 Thumbs.db
+/Users/gzh/IdeaProjects/kite/58_image_check/
 # package ignore (optional)
 # *.jar
 # *.war
