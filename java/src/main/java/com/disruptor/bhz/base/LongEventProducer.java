@@ -1,8 +1,8 @@
 package com.disruptor.bhz.base;
 
-import java.nio.ByteBuffer;
-
 import com.lmax.disruptor.RingBuffer;
+
+import java.nio.ByteBuffer;
 /**
  * 很明显的是：当用一个简单队列来发布事件的时候会牵涉更多的细节，这是因为事件对象还需要预先创建。
  * 发布事件最少需要两步：获取下一个事件槽并发布事件（发布事件的时候要使用try/finnally保证事件一定会被发布）。
@@ -13,7 +13,6 @@ import com.lmax.disruptor.RingBuffer;
  * <B>模块名称：</B><BR>
  * <B>中文类名：</B><BR>
  * <B>概要说明：</B><BR>
- * @author 北京尚学堂（alienware）
  * @since 2015年11月23日
  */
 public class LongEventProducer {

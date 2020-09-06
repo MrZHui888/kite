@@ -16,7 +16,7 @@ public class Handler1 implements EventHandler<Trade>, WorkHandler<Trade> {
 
     @Override
     public void onEvent(Trade event) throws Exception {  
-   // 	System.out.println(Thread.currentThread().getId()+"  "+"handler1: set name");
+    	System.out.println(Thread.currentThread().getId()+"  "+"handler1: set name");
     	event.setName("h1");
     }
 }  

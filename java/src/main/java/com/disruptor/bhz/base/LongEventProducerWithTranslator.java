@@ -1,9 +1,9 @@
 package com.disruptor.bhz.base;
 
-import java.nio.ByteBuffer;
-
 import com.lmax.disruptor.EventTranslatorOneArg;
 import com.lmax.disruptor.RingBuffer;
+
+import java.nio.ByteBuffer;
 
 /**
  * Disruptor 3.0提供了lambda式的API。这样可以把一些复杂的操作放在Ring Buffer，
@@ -12,7 +12,6 @@ import com.lmax.disruptor.RingBuffer;
  * <B>模块名称：</B><BR>
  * <B>中文类名：</B><BR>
  * <B>概要说明：</B><BR>
- * @author 北京尚学堂（alienware）
  * @since 2015年11月23日
  */
 public class LongEventProducerWithTranslator {

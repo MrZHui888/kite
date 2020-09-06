@@ -36,12 +36,9 @@ public class Txt {
                 File file = new File(path);
                 try {
                     ReadFileUtils.copyFile(file,x1+"/"+file.getName());
-
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-
-
 
             }
 
