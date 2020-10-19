@@ -9,6 +9,7 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * 后面请求依赖于前面请求的执行结果
+ *
  * @author gzh  on 2019-12-26
  * @version 1.0
  */
@@ -19,7 +20,7 @@ public class Test {
         DeWorker1 w1 = new DeWorker1();
         DeWorker2 w2 = new DeWorker2();
 
-        WorkerWrapper<WorkResult<User>, String> workerWrapper2 =  new WorkerWrapper.Builder<WorkResult<User>, String>()
+        WorkerWrapper<WorkResult<User>, String> workerWrapper2 = new WorkerWrapper.Builder<WorkResult<User>, String>()
                 .worker(w2)
                 .callback(w2)
                 .build();
@@ -36,6 +37,8 @@ public class Test {
                 .next(workerWrapper1)
                 .callback(w)
                 .build();
+
+
         //虽然尚未执行，但是也可以先取得结果的引用，作为下一个任务的入参
         WorkResult<User> result = workerWrapper.getWorkResult();
         WorkResult<User> result1 = workerWrapper1.getWorkResult();

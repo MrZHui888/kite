@@ -1,6 +1,7 @@
 package com.kite.hash;
 
 import com.google.common.collect.Lists;
+import org.apache.commons.lang3.RandomUtils;
 
 import java.util.*;
 
@@ -68,17 +69,15 @@ public class HashRingNoVirtualNode {
 
         long start = System.currentTimeMillis();
         for (int i = 0; i < 1000000; i++) {
-            String widgetId = UUID.randomUUID().toString().replace("-", "");
 
-            String server1 = hashing.get(widgetId);
-
+            long w = RandomUtils.nextLong(1723035544582l, 9723035544582l);
+            String server1 = hashing.get(String.valueOf(w));
 
             if (resMap1.containsKey(server1)) {
                 resMap1.put(server1, resMap1.getOrDefault(server1, 0) + 1);
             } else {
                 resMap1.put(server1, 1);
             }
-
         }
 
         System.out.println("dddsadsa:" + (System.currentTimeMillis() - start));

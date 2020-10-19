@@ -7,7 +7,7 @@ import com.lmax.disruptor.RingBuffer;
  * <B>模块名称：</B><BR>
  * <B>中文类名：</B><BR>
  * <B>概要说明：</B><BR>
- * @author 北京尚学堂（alienware）
+ * @author （alienware）
  * @since 2015年11月23日
  */
 public class Producer {
