@@ -10,6 +10,8 @@ import com.thread.arrange.async.worker.WorkResult;
  */
 public interface ICallback<T, V> {
 
+
+
     void begin();
 
     /**

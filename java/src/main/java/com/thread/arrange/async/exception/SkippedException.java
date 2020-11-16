@@ -6,11 +6,14 @@ package com.thread.arrange.async.exception;
  * @version 1.0
  */
 public class SkippedException extends RuntimeException {
+
     public SkippedException() {
         super();
     }
 
     public SkippedException(String message) {
+
         super(message);
+
     }
 }

@@ -9,7 +9,6 @@ import java.util.Arrays;
 public class QuickSort {
     public static void main(String[] args) {
         int[] num = {2, 123, 43, 54, 654, 76, 2, 4, 33};
-
         sort(num, 0, num.length - 1);
         Arrays.stream(num).forEach(x -> System.out.print(x + " "));
 

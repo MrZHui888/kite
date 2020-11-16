@@ -12,6 +12,8 @@ public class WorkResult<V> {
      * 结果状态
      */
     private ResultState resultState;
+
+
     private Exception ex;
 
     public WorkResult(V result, ResultState resultState) {

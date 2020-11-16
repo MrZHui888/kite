@@ -17,7 +17,9 @@ public class SystemClock {
     private final AtomicLong now;
 
     private static class InstanceHolder {
+
         private static final SystemClock INSTANCE = new SystemClock(1);
+
     }
 
     private SystemClock(int period) {
@@ -31,6 +33,7 @@ public class SystemClock {
     }
 
     private void scheduleClockUpdating() {
+
         ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor(new ThreadFactory() {
             @Override
             public Thread newThread(Runnable runnable) {
