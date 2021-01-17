@@ -1,6 +1,5 @@
 package com.kite.algorithm;
 
-import com.sun.tools.javac.util.Assert;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +23,6 @@ import java.util.Stack;
 public class ValidParentheses {
 
     public static void main(String[] args) {
-        Assert.check(isValid("([])"));
 
 //        Assert.check(isValid("({[)"));
 
