@@ -1,5 +1,6 @@
 package com.disruptor.bhz.threadpoolv2.handler;
 
+import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadFactory;
 
 public class SynchronousHandlerConfig {
@@ -7,6 +8,8 @@ public class SynchronousHandlerConfig {
     private final Thread[] threads;
 
     private final ThreadFactory threadFactory;
+
+    private final SynchronousQueue<Runnable> runnables;
 
     private final boolean isStart;
 
@@ -16,14 +19,18 @@ public class SynchronousHandlerConfig {
 
     private final boolean fair;
 
-    public SynchronousHandlerConfig(Thread[] threads, ThreadFactory threadFactory, boolean isStart, int size, String name, boolean fair) {
+
+    public SynchronousHandlerConfig(Thread[] threads, ThreadFactory threadFactory, SynchronousQueue<Runnable> runnables, boolean isStart, int size, String name, boolean fair) {
         this.threads = threads;
         this.threadFactory = threadFactory;
+        this.runnables = runnables;
         this.isStart = isStart;
         this.size = size;
         this.name = name;
         this.fair = fair;
     }
+
+
 
 
     /**
@@ -60,9 +67,15 @@ public class SynchronousHandlerConfig {
     }
 
 
+    public SynchronousQueue<Runnable> getRunnables() {
+        return runnables;
+    }
+
+
     public static final class SynchronousHandlerConfigBuilder {
         private Thread[] threads;
         private ThreadFactory threadFactory;
+        private SynchronousQueue<Runnable> runnables;
         private boolean isStart;
         private int size;
         private String name;
@@ -82,6 +95,11 @@ public class SynchronousHandlerConfig {
 
         public SynchronousHandlerConfigBuilder withThreadFactory(ThreadFactory threadFactory) {
             this.threadFactory = threadFactory;
+            return this;
+        }
+
+        public SynchronousHandlerConfigBuilder withRunnables(SynchronousQueue<Runnable> runnables) {
+            this.runnables = runnables;
             return this;
         }
 
@@ -106,7 +124,7 @@ public class SynchronousHandlerConfig {
         }
 
         public SynchronousHandlerConfig build() {
-            return new SynchronousHandlerConfig(threads, threadFactory, isStart, size, name, fair);
+            return new SynchronousHandlerConfig(threads, threadFactory, runnables, isStart, size, name, fair);
         }
     }
 }

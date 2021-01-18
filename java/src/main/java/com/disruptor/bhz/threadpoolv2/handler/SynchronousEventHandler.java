@@ -13,6 +13,7 @@ public class SynchronousEventHandler implements RunWorkHandler {
         this.synchronousHandlerConfig = synchronousHandlerConfig;
     }
 
+
     public SynchronousEventHandler(String name, int size, boolean fair) {
         this.synchronousHandlerConfig = SynchronousHandlerConfig.SynchronousHandlerConfigBuilder
                 .aSynchronousHandlerConfig()
@@ -39,7 +40,11 @@ public class SynchronousEventHandler implements RunWorkHandler {
 
     @Override
     public void execute(Runnable command) {
-
+        try {
+            synchronousHandlerConfig.getRunnables().put(command);
+        } catch (InterruptedException e) {
+            Thread.interrupted();
+        }
     }
 
 }
