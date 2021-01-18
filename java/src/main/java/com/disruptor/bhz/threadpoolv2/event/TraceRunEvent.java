@@ -1,7 +1,7 @@
 package com.disruptor.bhz.threadpoolv2.event;
 
 /**
- * 携带trace信息的run
+ * 携带trace信息的runnable
  */
 public class TraceRunEvent {
 
