@@ -24,7 +24,10 @@ class Acceptor {
 
     private final boolean isRuning;
 
-    private final Actuator[] actuators;//size 1 or splitSize}
+    /**
+     * //size 1 or splitSize
+     */
+    private final Actuator[] actuators;
 
     public Acceptor(String name, int bufferSize, int splitSize, boolean singleProducer, Distributor distributor) {
         this.name = name;

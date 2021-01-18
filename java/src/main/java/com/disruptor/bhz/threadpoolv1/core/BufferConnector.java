@@ -6,6 +6,7 @@ import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 
 import java.util.concurrent.ThreadFactory;
+
 /**
  * 带缓冲的任务连接器
  */
@@ -24,14 +25,18 @@ public class BufferConnector extends AbsConnector {
     private final ThreadFactory threadFactory;
 
     public BufferConnector(String name, int bufferSize) {
-        this(name,bufferSize,true);
+        this(name, bufferSize, true);
     }
 
     public BufferConnector(String name, int bufferSize, boolean singleProducer) {
         this.name = name;
         this.bufferSize = bufferSize;
-        this.threadFactory = (r)->{Thread t = new Thread(r,name);t.setPriority(Thread.MAX_PRIORITY);return t;};
-        this.disruptor = new Disruptor(new RunEventFactory(),bufferSize,threadFactory,singleProducer?ProducerType.SINGLE:ProducerType.MULTI,new YieldingWaitStrategy());
+        this.threadFactory = (r) -> {
+            Thread t = new Thread(r, name);
+            t.setPriority(Thread.MAX_PRIORITY);
+            return t;
+        };
+        this.disruptor = new Disruptor(new RunEventFactory(), bufferSize, threadFactory, singleProducer ? ProducerType.SINGLE : ProducerType.MULTI, new YieldingWaitStrategy());
         this.acceptor = null;
         this.isConnect = false;
     }
@@ -46,21 +51,21 @@ public class BufferConnector extends AbsConnector {
     }
 
     @Override
-    public BufferConnector connect(Acceptor acceptor){
-        if (isConnect){
+    public BufferConnector connect(Acceptor acceptor) {
+        if (isConnect) {
             throw new IllegalStateException();
         }
-        BufferConnector connector = new BufferConnector(name,bufferSize,true,acceptor,disruptor,threadFactory);
+        BufferConnector connector = new BufferConnector(name, bufferSize, true, acceptor, disruptor, threadFactory);
         connector.disruptor.handleEventsWith(acceptor.acceptorHandle);
         connector.disruptor.start();
         return connector;
     }
 
     @Override
-    public void transfer(Runnable command){
-        if(isConnect){
-            disruptor.publishEvent((e,s)->e.setRunnable(command));
-        }else{
+    public void transfer(Runnable command) {
+        if (isConnect) {
+            disruptor.publishEvent((e, s) -> e.setRunnable(command));
+        } else {
             throw new IllegalStateException();
         }
     }
@@ -73,7 +78,7 @@ public class BufferConnector extends AbsConnector {
 
     @Override
     public int getRemainingCapacity() {
-        return (int)disruptor.getRingBuffer().remainingCapacity();
+        return (int) disruptor.getRingBuffer().remainingCapacity();
     }
 
 }
