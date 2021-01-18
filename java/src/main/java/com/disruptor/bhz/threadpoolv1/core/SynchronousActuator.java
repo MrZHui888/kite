@@ -39,6 +39,7 @@ public class SynchronousActuator implements Actuator {
                     } catch (InterruptedException e) {
                         Thread.interrupted();
                     } catch (Exception e) {
+
                     }
                 }
             });
