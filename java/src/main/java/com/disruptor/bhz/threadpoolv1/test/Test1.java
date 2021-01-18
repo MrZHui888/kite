@@ -4,7 +4,10 @@ import com.disruptor.bhz.threadpoolv1.RingExecutorService;
 import com.disruptor.bhz.threadpoolv1.core.ConnectorBuilder;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 public class Test1 {
 
@@ -16,23 +19,25 @@ public class Test1 {
         System.out.println("开始jdk ");
         initJDKEs();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             cycleCall(executorService);
         }
+        long endTime = System.currentTimeMillis();
 
-        System.out.println("jdk结束 cost:  " + (System.currentTimeMillis() - time));
-
+        System.out.println("jdk结束 cost:  " + (endTime - time));
+        System.out.println("avg  :" + (endTime - time) / 5);
 
         long time1 = System.currentTimeMillis();
         System.out.println("开始ring ");
         initRingEs();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             cycleCall(executorService);
         }
 
-        System.out.println("ring结束 cost:  " + (System.currentTimeMillis() - time1));
-
+        long endTime1 = System.currentTimeMillis();
+        System.out.println("ring结束 cost:  " + (endTime1 - time1));
+        System.out.println("avg  :" + (endTime1 - time1) / 5);
     }
 
 
@@ -42,18 +47,18 @@ public class Test1 {
                         .createConnector("connector")
 //                        .isSingleProducer()
                         .isMultipleProducer()
-                        .directConnect().connectAcceptor("acceptor", 65536, 2)
+                        .directConnect().connectAcceptor("acceptor", 65536, 5)
                         .sequenceDistributor()
-                        .runWhithDirectActuator().usePool(50)
+                        .runWhithDirectActuator().usePool(20)
                         .build());
 
     }
 
 
     private static void initJDKEs() throws Exception {
-//        executorService =  Executors.newFixedThreadPool(100);
 
-        executorService = new ThreadPoolExecutor(100, 100, 60, TimeUnit.SECONDS, new LinkedBlockingDeque<>(65536),
+//        executorService = Executors.newWorkStealingPool(100);
+        executorService = new ThreadPoolExecutor(100, 100, 60, TimeUnit.SECONDS, new LinkedBlockingDeque<>(10000000),
                 new ThreadFactoryBuilder().setNameFormat("operator-pool-%d").build(), new ThreadPoolExecutor.AbortPolicy());
 
     }
@@ -61,16 +66,22 @@ public class Test1 {
 
     public static void cycleCall(ExecutorService es) {
         final long time = System.currentTimeMillis();
-        for (int i = 1; i < 1999999; i++) {
-            final String idx = String.valueOf(i);
-            final int count = i;
-            es.execute(() -> {
-                String aa = "idx=" + idx + "currentThread=" + Thread.currentThread() + " costtime=" + (System.currentTimeMillis() - time);
-                int b = aa.length();
-                if (count == 1999997) {
-                    System.out.println(b + "idx=" + idx + "currentThread=" + Thread.currentThread() + " costtime=" + (System.currentTimeMillis() - time));
-                }
-            });
+
+        List<Integer> list = new ArrayList<>();
+        for (int i = 1; i < 10000000; i++) {
+            list.add(i);
         }
+
+        List<Future<String>> list1 = list.stream().map(iterm -> CompletableFuture.supplyAsync(() -> {
+            if (iterm.equals(Integer.valueOf(9999998))) {
+                System.out.println(Thread.currentThread().getName() + "  idx:" + iterm + " cost:" + (System.currentTimeMillis() - time));
+            }
+            return "";
+        }, es)).collect(Collectors.toList());
+
+
+        CompletableFuture.allOf(list1.toArray(new CompletableFuture[list1.size()])).join();
+
+
     }
 }

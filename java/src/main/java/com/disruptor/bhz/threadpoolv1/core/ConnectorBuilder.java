@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ConnectorBuilder implements Step1, Step2, Step3, Step4, Step5, Step6, Step7, Step8 {
 
-    private static final ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor(ThreadFactorys.DAEMON_THREAD_FACTORY);
+//    private static final ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor(ThreadFactorys.DAEMON_THREAD_FACTORY);
 
     private String connectorName;
 
@@ -93,22 +93,22 @@ public class ConnectorBuilder implements Step1, Step2, Step3, Step4, Step5, Step
             }
         }
         connector = connector.connect(acceptor);
-        try {
-            TimedPoolMonitor timedPoolMonitor = new TimedPoolMonitor(isSingleProducer, connectorName, connectBufferSize, acceptorName, acceptorBufferSize, acceptorSplitSize);
-            final AbsConnector absConnector = (AbsConnector) connector;
-            final Acceptor finalAcceptor = acceptor;
-            scheduledExecutorService.scheduleWithFixedDelay(() -> {
-                int connectorRemainingCapacity = absConnector.getRemainingCapacity();
-                timedPoolMonitor.updateConnectorRemainingCapacity(connectorRemainingCapacity);
-                int[] acceptorRemainingCapacity = finalAcceptor.getRemainingCapacity();
-                timedPoolMonitor.updateAcceptorsRemainingCapacity(acceptorRemainingCapacity);
-            }, 1, 1, TimeUnit.SECONDS);
-            MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
-            ObjectName objectName = new ObjectName("com.lou1052.core.base.thread.threadpool:type=PoolMonitor-" + timedPoolMonitor.hashCode());
-            mBeanServer.registerMBean(timedPoolMonitor, objectName);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            TimedPoolMonitor timedPoolMonitor = new TimedPoolMonitor(isSingleProducer, connectorName, connectBufferSize, acceptorName, acceptorBufferSize, acceptorSplitSize);
+//            final AbsConnector absConnector = (AbsConnector) connector;
+//            final Acceptor finalAcceptor = acceptor;
+//            scheduledExecutorService.scheduleWithFixedDelay(() -> {
+//                int connectorRemainingCapacity = absConnector.getRemainingCapacity();
+//                timedPoolMonitor.updateConnectorRemainingCapacity(connectorRemainingCapacity);
+//                int[] acceptorRemainingCapacity = finalAcceptor.getRemainingCapacity();
+//                timedPoolMonitor.updateAcceptorsRemainingCapacity(acceptorRemainingCapacity);
+//            }, 1, 1, TimeUnit.SECONDS);
+//            MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
+//            ObjectName objectName = new ObjectName("com.lou1052.core.base.thread.threadpool:type=PoolMonitor-" + timedPoolMonitor.hashCode());
+//            mBeanServer.registerMBean(timedPoolMonitor, objectName);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         return connector;
     }
 
