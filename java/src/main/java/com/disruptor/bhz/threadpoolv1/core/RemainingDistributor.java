@@ -9,6 +9,7 @@ import java.util.stream.Stream;
  * 空闲选择器
  */
 public class RemainingDistributor implements Distributor {
+
     private static final Comparator<Disruptor> findMaxRemainingCapacity = (a, b) -> (int) (a.getRingBuffer().remainingCapacity() - b.getRingBuffer().remainingCapacity());
 
     @Override

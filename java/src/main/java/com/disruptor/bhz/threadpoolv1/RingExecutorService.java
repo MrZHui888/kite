@@ -23,7 +23,7 @@ public class RingExecutorService extends AbstractExecutorService implements Exec
         this(false, 1048576, Runtime.getRuntime().availableProcessors(), 65536);
     }
 
-    RingExecutorService(Connector connector) {
+    public RingExecutorService(Connector connector) {
         this.connector = connector;
     }
 
@@ -35,7 +35,14 @@ public class RingExecutorService extends AbstractExecutorService implements Exec
      * @param consumerCacheSize 消费者缓冲区大小 （必须满足 2的n次方，建议 生产者缓冲区大小=消费者个数*消费者缓冲区大小）
      */
     public RingExecutorService(boolean singleProducer, int producerCacheSize, int consumerSize, int consumerCacheSize) {
-        connector = ConnectorBuilder.newBuilder().createConnector("connector").isSingleProducer(singleProducer).channelConnect(producerCacheSize).connectAcceptor("acceptor", consumerCacheSize, consumerSize).sequenceDistributor().runWhithSynchronousActuator("actuator", 2, false).build();
+        connector = ConnectorBuilder.newBuilder()
+                .createConnector("connector")
+                .isSingleProducer(singleProducer)
+                .channelConnect(producerCacheSize)
+                .connectAcceptor("acceptor", consumerCacheSize, consumerSize)
+                .sequenceDistributor()
+                .runWhithSynchronousActuator("actuator", 2, false)
+                .build();
     }
 
     @Override
@@ -69,8 +76,9 @@ public class RingExecutorService extends AbstractExecutorService implements Exec
 
     @Override
     public void execute(Runnable command) {
-        if (!isShutdown)
+        if (!isShutdown) {
             this.connector.transfer(command);
+        }
     }
 
 }
