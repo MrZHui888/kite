@@ -1,6 +1,6 @@
 package com.disruptor.bhz.threadpoolv2.distribute;
 
-import com.disruptor.bhz.threadpoolv1.core.RunEvent;
+import com.disruptor.bhz.threadpoolv2.event.RunEvent;
 import com.lmax.disruptor.dsl.Disruptor;
 
 import java.util.Comparator;
