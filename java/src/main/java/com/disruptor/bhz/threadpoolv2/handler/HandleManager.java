@@ -49,7 +49,8 @@ public class HandleManager implements ThreadHandle {
         this.bufferSize = bufferSize;
         this.splitSize = splitSize;
         this.splitFactor = splitSize - 1;
-        this.runEventHandle = new RunEventHandle(distributor,disruptors,splitSize,splitFactor);
+        this.runEventHandle =null;
+//                new RunEventHandle(distributor,disruptors,splitSize,splitFactor);
         this.disruptors = new Disruptor[splitSize];
         this.actuators = null;
         for (int i = 0; i < splitSize; i++) {
@@ -68,7 +69,8 @@ public class HandleManager implements ThreadHandle {
         }
         RunEventHandle[] ats = new RunEventHandle[1];
         ats[0] = runEventHandle;
-        HandleManager acceptor = new HandleManager(name, bufferSize, splitSize, splitFactor, runEventHandle, disruptors, true, ats);
+        HandleManager acceptor =null;
+//                new HandleManager(name, bufferSize, splitSize, splitFactor, runEventHandle, disruptors, true, ats);
         for (int i = 0; i < acceptor.splitSize; i++) {
             acceptor.disruptors[i].handleEventsWith(runEventHandle);
             acceptor.disruptors[i].start();
