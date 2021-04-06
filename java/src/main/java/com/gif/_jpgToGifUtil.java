@@ -13,15 +13,33 @@ public class _jpgToGifUtil {
 
         String imagePath = "/Users/gzh/Desktop/图片/";
 
-        String newwPic = imagePath + "1.gif";
 
+        for (int i = 0; i < 5; i++) {
+
+            long start =System.currentTimeMillis();
+            File filePath = new File(imagePath);
+            List<String> images = Arrays.stream(filePath.list()).map(x -> {
+                return imagePath + x;
+            }).collect(Collectors.toList());
+            String newwPic = imagePath + String.valueOf(i) + ".gif";
+            int playTime = 500;
+            jpgToGif(images, newwPic, playTime);
+
+            System.out.println(System.currentTimeMillis()-start);
+        }
+
+
+    }
+
+
+    private void gen(String imagePath, String newPicPath) {
         File filePath = new File(imagePath);
         List<String> images = Arrays.stream(filePath.list()).map(x -> {
             return imagePath + x;
         }).collect(Collectors.toList());
 
         int playTime = 500;
-        jpgToGif(images, newwPic, playTime);
+        jpgToGif(images, newPicPath, playTime);
     }
 
     /**

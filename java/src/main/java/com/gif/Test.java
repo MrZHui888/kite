@@ -22,13 +22,29 @@ public class Test {
 
     public static void main(String[] args) throws Exception {
         //合成的MP4
-        String mp4SavePath = "/Users/gzh/Desktop/图片/img.mp4";
+        String mp4SavePath = "/Users/gzh/Desktop/图片/";
         //图片地址 这里面放了22张图片
         String img = "/Users/gzh/Desktop/图片";
+
+        for (int i = 0; i < 5; i++) {
+
+            long start =System.currentTimeMillis();
+            String newwPic = mp4SavePath + String.valueOf(i) + ".mp4";
+            int playTime = 500;
+            gen(mp4SavePath, newwPic);
+
+            System.out.println(System.currentTimeMillis()-start);
+        }
+
+
+    }
+
+
+    private static void gen(String  imagePaths,String mp4Path) throws Exception{
         int width = 1600;
         int height = 900;
         //读取所有图片
-        File file = new File(img);
+        File file = new File(imagePaths);
         File[] files = file.listFiles();
         Map<Integer, File> imgMap = new HashMap<Integer, File>();
         int num = 0;
@@ -39,7 +55,7 @@ public class Test {
             imgMap.put(num, imgFile);
             num++;
         }
-        createMp4(mp4SavePath, imgMap, width, height);
+        createMp4(mp4Path, imgMap, width, height);
     }
 
     private static void createMp4(String mp4SavePath, Map<Integer, File> imgMap, int width, int height) throws FrameRecorder.Exception {
