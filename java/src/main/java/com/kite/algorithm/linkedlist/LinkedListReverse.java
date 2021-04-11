@@ -11,17 +11,25 @@ public class LinkedListReverse {
         Node node1 = new Node(2, node);
         Node node2 = new Node(3, node1);
         Node node3 = new Node(4, node2);
+        printLinkedList(node2);
 
-        printLinkedList(node3);
 
-        Node res = new Node(-1);
-        reverse1(node3, null);
-        System.out.println("------");
-
-        printLinkedList(node);
+        Node reverseNode = reverse1(node2);
 
         System.out.println("");
+        printLinkedList(reverseNode);
+        System.out.println("");
+    }
 
+    private static Node reverse1(Node headNode) {
+        if (headNode.next == null) {
+            return headNode;
+        }
+
+        Node lastNode = reverse1(headNode.next);
+        headNode.next.next = headNode;
+        headNode.next =null;
+        return lastNode;
     }
 
 
@@ -50,14 +58,6 @@ public class LinkedListReverse {
         return result.next;
     }
 
-    public static void reverse1(Node node, Node result) {
-        if (node == null) {
-            return;
-        }
-        Node tmpNode = node.next;
-        node.next = result;
-        reverse1(tmpNode, node);
-    }
 
     /**
      * 链表的打印ååååååååååå
