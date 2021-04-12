@@ -1,5 +1,7 @@
 package com.kite.algorithm.heap;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -36,7 +38,7 @@ class Soluttion {
         ListNode result = solute.mergeKLists1(listNodes);
 
 
-        System.out.println(result);
+        System.out.println(JSONObject.toJSONString(result));
 
     }
 
