@@ -11,14 +11,39 @@ public class LinkedListReverse {
         Node node1 = new Node(2, node);
         Node node2 = new Node(3, node1);
         Node node3 = new Node(4, node2);
-        printLinkedList(node2);
+
+        int[] ints = reversePrint(node2);
+
+       System.out.println("");
+
+//        printLinkedList(node2);
+//
+//
+//        Node reverseNode = reverse1(node2);
+//
+//        System.out.println("");
+//        printLinkedList(reverseNode);
+//        System.out.println("");
+    }
+
+    public static int[] reversePrint(Node head) {
+        int[] result = reverse(0, head);
+
+        return result;
+    }
 
 
-        Node reverseNode = reverse1(node2);
+    static int[]   reverse(int num, Node listNode) {
+        if (listNode == null) {
+            return new int[]{};
+        }
 
-        System.out.println("");
-        printLinkedList(reverseNode);
-        System.out.println("");
+
+        int[] result= reverse(num + 1, listNode.next);
+
+
+
+        return null;
     }
 
     private static Node reverse1(Node headNode) {
@@ -28,7 +53,7 @@ public class LinkedListReverse {
 
         Node lastNode = reverse1(headNode.next);
         headNode.next.next = headNode;
-        headNode.next =null;
+        headNode.next = null;
         return lastNode;
     }
 
