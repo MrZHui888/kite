@@ -16,7 +16,6 @@
         <module>hbase</module>
         <module>java</module>
         <module>nio</module>
-        <module>58_image_check</module>
         <module>kafka</module>
     </modules>
 

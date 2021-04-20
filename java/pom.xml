@@ -24,16 +24,16 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>javacv-platform</artifactId>
-            <version>1.5.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>javacv</artifactId>
-            <version>1.5.4</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.bytedeco</groupId>-->
+<!--            <artifactId>javacv-platform</artifactId>-->
+<!--            <version>1.5.4</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.bytedeco</groupId>-->
+<!--            <artifactId>javacv</artifactId>-->
+<!--            <version>1.5.4</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>junit</groupId>
@@ -131,8 +131,11 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
-
-
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.72</version>
+        </dependency>
     </dependencies>
 
     <build>
